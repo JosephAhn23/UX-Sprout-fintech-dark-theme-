@@ -1,0 +1,192 @@
+
+<style>
+  .pf1 { font-family: var(--font-sans); padding: 0; }
+  .pf1-header { background: #0f1923; border-radius: 12px 12px 0 0; padding: 20px 24px 16px; }
+  .pf1-body { background: #141e28; border-radius: 0 0 12px 12px; padding: 20px 24px 24px; }
+  .pf1-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .pf1-logo { font-size: 15px; font-weight: 500; color: #e8f4e8; letter-spacing: 0.04em; }
+  .pf1-nav-links { display: flex; gap: 20px; }
+  .pf1-nav-links span { font-size: 12px; color: #7a9a8a; cursor: pointer; }
+  .pf1-nav-links span.active { color: #5DCAA5; }
+  .pf1-hero { margin-bottom: 20px; }
+  .pf1-balance-label { font-size: 11px; color: #6a8a7a; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .pf1-balance { font-size: 36px; font-weight: 500; color: #e8f5ee; letter-spacing: -0.02em; }
+  .pf1-balance span { font-size: 20px; color: #5DCAA5; margin-right: 4px; }
+  .pf1-change { display: inline-flex; align-items: center; gap: 4px; background: #0d2e1f; border-radius: 6px; padding: 3px 10px; font-size: 12px; color: #5DCAA5; margin-top: 6px; }
+  .pf1-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+  .pf1-card { background: #1a2733; border-radius: 10px; padding: 14px 16px; }
+  .pf1-card-label { font-size: 10px; color: #5a7a6a; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+  .pf1-card-val { font-size: 18px; font-weight: 500; color: #d4efe3; }
+  .pf1-card-sub { font-size: 11px; color: #4a7a60; margin-top: 2px; }
+  .pf1-section-title { font-size: 11px; color: #5a7a6a; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .pf1-chart { margin-bottom: 20px; }
+  .pf1-river { position: relative; height: 72px; }
+  .pf1-river svg { width: 100%; height: 72px; }
+  .pf1-holdings { display: flex; flex-direction: column; gap: 8px; }
+  .pf1-holding-row { display: flex; align-items: center; gap: 12px; }
+  .pf1-holding-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .pf1-holding-name { font-size: 13px; color: #b4cfc0; flex: 1; }
+  .pf1-holding-bar-wrap { flex: 2; height: 4px; background: #1a2f24; border-radius: 2px; overflow: hidden; }
+  .pf1-holding-bar { height: 100%; border-radius: 2px; }
+  .pf1-holding-pct { font-size: 12px; color: #7aaa8a; min-width: 36px; text-align: right; }
+  .pf1-holding-val { font-size: 12px; color: #4a7060; min-width: 60px; text-align: right; }
+  .pf1-activity { margin-top: 20px; }
+  .pf1-txn { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #1e3028; }
+  .pf1-txn:last-child { border-bottom: none; }
+  .pf1-txn-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pf1-txn-info { flex: 1; }
+  .pf1-txn-name { font-size: 13px; color: #c4dece; }
+  .pf1-txn-date { font-size: 11px; color: #4a6a5a; margin-top: 1px; }
+  .pf1-txn-amt { font-size: 14px; font-weight: 500; }
+  .pf1-txn-amt.pos { color: #5DCAA5; }
+  .pf1-txn-amt.neg { color: #7aaa8a; }
+  .pf1-celebrate { background: linear-gradient(90deg, #0d2e20, #0f3520); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; margin-top: 16px; border: 0.5px solid #1d4030; }
+  .pf1-celebrate-icon { font-size: 22px; }
+  .pf1-celebrate-text { font-size: 13px; color: #8acfaa; line-height: 1.5; }
+  .pf1-celebrate-text strong { color: #5DCAA5; font-weight: 500; }
+  .pf1-tag { background: #0d2e1f; border-radius: 20px; padding: 2px 10px; font-size: 10px; color: #3d9a70; margin-left: auto; }
+  .pf1-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 0.5px solid #1a2a22; }
+  .pf1-bottom-cta { font-size: 12px; color: #4a7a60; }
+  .pf1-bottom-btn { background: #0f3520; border: 0.5px solid #1d5030; border-radius: 8px; padding: 8px 16px; font-size: 13px; color: #5DCAA5; cursor: pointer; }
+  .pf1-label { font-size: 9px; color: #3a5a48; text-transform: uppercase; letter-spacing: 0.08em; }
+</style>
+
+<div class="pf1">
+  <div style="border-radius:12px; overflow:hidden; border: 0.5px solid #1a2e24;">
+    <div class="pf1-header">
+      <div class="pf1-nav">
+        <div class="pf1-logo">sprout<span style="color:#5DCAA5">.</span></div>
+        <div class="pf1-nav-links">
+          <span class="active">portfolio</span>
+          <span>learn</span>
+          <span>goals</span>
+          <span style="color:#5DCAA5;font-size:22px;line-height:1">⊕</span>
+        </div>
+      </div>
+      <div class="pf1-hero">
+        <div class="pf1-balance-label">total portfolio</div>
+        <div class="pf1-balance"><span>$</span>24,830.00</div>
+        <div class="pf1-change">
+          <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,8 4,4 6,6 9,2" stroke="#5DCAA5" stroke-width="1.5" fill="none"/></svg>
+          +$1,240 &nbsp;·&nbsp; +5.3% this month
+        </div>
+      </div>
+      <div class="pf1-cards">
+        <div class="pf1-card">
+          <div class="pf1-card-label">invested</div>
+          <div class="pf1-card-val">$21,400</div>
+          <div class="pf1-card-sub">+2.1% gain</div>
+        </div>
+        <div class="pf1-card">
+          <div class="pf1-card-label">cash</div>
+          <div class="pf1-card-val">$3,430</div>
+          <div class="pf1-card-sub">ready to deploy</div>
+        </div>
+        <div class="pf1-card">
+          <div class="pf1-card-label">next goal</div>
+          <div class="pf1-card-val">$30K</div>
+          <div class="pf1-card-sub">83% there</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pf1-body">
+      <div class="pf1-chart">
+        <div class="pf1-section-title">wealth river — 12 months</div>
+        <div class="pf1-river">
+          <svg viewBox="0 0 560 72" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1D9E75" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#1D9E75" stop-opacity="0.04"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,60 C40,58 60,52 100,48 C140,44 160,50 200,42 C240,34 260,38 300,30 C340,22 360,26 400,18 C440,10 480,12 520,8 L560,6 L560,72 L0,72 Z" fill="url(#riverGrad)"/>
+            <path d="M0,60 C40,58 60,52 100,48 C140,44 160,50 200,42 C240,34 260,38 300,30 C340,22 360,26 400,18 C440,10 480,12 520,8 L560,6" fill="none" stroke="#1D9E75" stroke-width="1.5"/>
+            <circle cx="560" cy="6" r="3.5" fill="#5DCAA5"/>
+            <text x="535" y="18" font-size="9" fill="#3d9a70" text-anchor="middle">$24.8K</text>
+            <text x="8" y="58" font-size="9" fill="#3d5a48">Jan</text>
+            <text x="140" y="68" font-size="9" fill="#3d5a48">Apr</text>
+            <text x="280" y="68" font-size="9" fill="#3d5a48">Jul</text>
+            <text x="420" y="68" font-size="9" fill="#3d5a48">Oct</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="pf1-section-title">holdings breakdown</div>
+      <div class="pf1-holdings">
+        <div class="pf1-holding-row">
+          <div class="pf1-holding-dot" style="background:#5DCAA5"></div>
+          <div class="pf1-holding-name">index funds</div>
+          <div class="pf1-holding-bar-wrap"><div class="pf1-holding-bar" style="width:58%;background:#1D9E75"></div></div>
+          <div class="pf1-holding-pct">58%</div>
+          <div class="pf1-holding-val">$14,401</div>
+        </div>
+        <div class="pf1-holding-row">
+          <div class="pf1-holding-dot" style="background:#378ADD"></div>
+          <div class="pf1-holding-name">tech stocks</div>
+          <div class="pf1-holding-bar-wrap"><div class="pf1-holding-bar" style="width:24%;background:#185FA5"></div></div>
+          <div class="pf1-holding-pct">24%</div>
+          <div class="pf1-holding-val">$5,959</div>
+        </div>
+        <div class="pf1-holding-row">
+          <div class="pf1-holding-dot" style="background:#EF9F27"></div>
+          <div class="pf1-holding-name">crypto</div>
+          <div class="pf1-holding-bar-wrap"><div class="pf1-holding-bar" style="width:10%;background:#BA7517"></div></div>
+          <div class="pf1-holding-pct">10%</div>
+          <div class="pf1-holding-val">$2,483</div>
+        </div>
+        <div class="pf1-holding-row">
+          <div class="pf1-holding-dot" style="background:#888780"></div>
+          <div class="pf1-holding-name">bonds</div>
+          <div class="pf1-holding-bar-wrap"><div class="pf1-holding-bar" style="width:8%;background:#5F5E5A"></div></div>
+          <div class="pf1-holding-pct">8%</div>
+          <div class="pf1-holding-val">$1,987</div>
+        </div>
+      </div>
+
+      <div class="pf1-activity">
+        <div class="pf1-section-title" style="margin-top:20px">recent activity</div>
+        <div class="pf1-txn">
+          <div class="pf1-txn-icon" style="background:#0d2e1f"><i class="ti ti-trending-up" style="color:#5DCAA5;font-size:15px" aria-hidden="true"></i></div>
+          <div class="pf1-txn-info">
+            <div class="pf1-txn-name">VOO auto-invest</div>
+            <div class="pf1-txn-date">Today · scheduled</div>
+          </div>
+          <div class="pf1-txn-amt pos">+$200.00</div>
+        </div>
+        <div class="pf1-txn">
+          <div class="pf1-txn-icon" style="background:#0d1e2e"><i class="ti ti-coin" style="color:#378ADD;font-size:15px" aria-hidden="true"></i></div>
+          <div class="pf1-txn-info">
+            <div class="pf1-txn-name">dividend received · MSFT</div>
+            <div class="pf1-txn-date">May 22 · reinvested</div>
+          </div>
+          <div class="pf1-txn-amt pos">+$34.12</div>
+        </div>
+        <div class="pf1-txn">
+          <div class="pf1-txn-icon" style="background:#1e1800"><i class="ti ti-arrows-exchange" style="color:#EF9F27;font-size:15px" aria-hidden="true"></i></div>
+          <div class="pf1-txn-info">
+            <div class="pf1-txn-name">rebalanced portfolio</div>
+            <div class="pf1-txn-date">May 18 · auto</div>
+          </div>
+          <div class="pf1-txn-amt neg" style="color:#888">—</div>
+        </div>
+      </div>
+
+      <div class="pf1-celebrate">
+        <div class="pf1-celebrate-icon">🌱</div>
+        <div class="pf1-celebrate-text"><strong>You just crossed $24K.</strong> You're in the top 12% of investors in your age group. Keep the streak going.</div>
+        <div class="pf1-tag">milestone</div>
+      </div>
+
+      <div class="pf1-bottom">
+        <div class="pf1-bottom-cta">What does rebalancing mean? <span style="color:#3d8060;font-size:11px">tap to learn ↗</span></div>
+        <div class="pf1-bottom-btn">+ invest</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:10px; display:flex; justify-content:space-between; padding:0 4px;">
+    <div class="pf1-label">sprout — first-gen investor dashboard</div>
+    <div class="pf1-label">ui/ux · figma · 2024</div>
+  </div>
+</div>
